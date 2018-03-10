@@ -25,7 +25,23 @@ use Roomify\Bat\Test\SetupStore;
 |
 */
 
+$router->get('/p/index', 'PropertiesController@getIndex');
+$router->get('/p/switch', 'PropertiesController@getSwitch');
+$router->post('/p/store', 'PropertiesController@postStore');
+$router->get('/p/show', 'PropertiesController@show');
+$router->post('/p/update', 'PropertiesController@postUpdate');
+$router->get('/p/destroy', 'PropertiesController@getDestroy');
+
+//Route::controller('properties', 'PropertiesController');
+//Route::controller('rooms', 'RoomsController');
+//Route::controller('channels', 'PropertiesChannelsController');
+//Route::controller('bulk', 'BulkController');
+//Route::controller('reservations', 'ReservationsController');
+//Route::controller('simulator', 'SimulatorController');
+
 $router->get('/', function () {
+
+    return app(\App\Channels\Expedia::class)->getInventoryList();
 
     app(CreateTables::class)->run();
 
